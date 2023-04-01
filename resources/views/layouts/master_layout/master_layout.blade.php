@@ -86,7 +86,8 @@
   $this.val($this.val().replace(/[^\d.]/g, ''));        
 });
 </script>
-
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- ChartJS -->
 <script src="/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -125,6 +126,6 @@
 <!-- Select2 -->
 {{-- <script src="/plugins/select2/js/select2.full.min.js"></script> --}}
 <script src="/plugins/select2/js/select2.full.min.js"></script>
-
+@stack('scripts')
 </body>
 </html>

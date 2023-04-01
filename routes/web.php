@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,12 @@ Route::middleware(['auth','user-role:customer'])->group(function(){
 // //Admin route
 Route::middleware(['auth','user-role:admin'])->prefix('admin')->group(function(){
     Route::get('/home',[HomeController::class, 'adminDashboard'])->name('home.admin');
+    Route::post('/store',[ProductController::class, 'store'])->name('store');
+    Route::get('/fetch-products',[ProductController::class, 'fetchAllProducts'])->name('fetchProducts');
+    Route::get('/edit',[ProductController::class, 'edit'])->name('edit');
+    Route::post('/update',[ProductController::class, 'update'])->name('update');
+    Route::post('/update',[ProductController::class, 'update'])->name('update');
+    Route::delete('/delete', [ProductController::class, 'delete'])->name('delete');
 });
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
