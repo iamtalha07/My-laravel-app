@@ -58,7 +58,7 @@
 </div>
   <!-- /.content-wrapper -->
 
-  {{-- @include('layouts.master_layout.footer_layout') --}}
+  @include('layouts.master_layout.footer_layout')
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

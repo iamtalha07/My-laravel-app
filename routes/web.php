@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//User route
+Route::middleware(['auth','user-role:customer'])->group(function(){
+    Route::get('/home',[HomeController::class, 'customerDashboard'])->name('home');
+});
+
+// //Admin route
+Route::middleware(['auth','user-role:admin'])->prefix('admin')->group(function(){
+    Route::get('/home',[HomeController::class, 'adminDashboard'])->name('home.admin');
+});
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

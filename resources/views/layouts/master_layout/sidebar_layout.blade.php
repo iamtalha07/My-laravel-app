@@ -15,7 +15,7 @@
                   <img src="/images/admin_images/man.png" class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
-                  <a href="" class="d-block">Talha</a>
+                  <a href="" class="d-block">{{ ucfirst(Auth::user()->name) }}</a>
               </div>
           </div>
 
