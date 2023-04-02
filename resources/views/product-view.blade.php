@@ -13,11 +13,10 @@
             @foreach ($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
-                    {{-- <td><img src="' . asset('images/product-image/' . $product->image) . '" width="50" alt="" class="img-thumbnail rounded-circle"></td> --}}
                     <td><img src="{{ asset('images/product-image/' . $product->image) }}" width="50" alt=""
                             class="img-thumbnail rounded-circle"></td>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->price }}</td>
+                    <td>${{ number_format($product->price) }}</td>
                     <td>
                         <a href="#" id="{{ $product->id }}" class="editIcon" data-toggle="modal"
                             data-target="#editProductModal"><i class="fa fa-edit"></i></a>

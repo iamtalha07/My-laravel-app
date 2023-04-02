@@ -65,43 +65,22 @@
             </div>
         </div>
 
-        {{-- <table class="table">
+        <table class="table">
             <thead style="background: #F5F5F5;">
                 <tr>
-                    <th>Item List</th>
+                    <th>Item</th>
                     <th></th>
                     <th class="text-right">Price</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><div><strong>Service</strong></div>
-                        <p>Description here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt maiores placeat similique nisi. Nisi ratione, molestias exercitationem illo reiciendis cumque?</p></td>
+                    <td><div><strong>{{ $order->product->name }}</strong></div>
                         <td></td>
-                        <td class="text-right">$600</td>
-                </tr>
-                <tr>
-                    <td><div><strong>Service</strong></div>
-                        <p>Description here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt maiores placeat similique nisi. Nisi ratione, molestias exercitationem illo reiciendis cumque?</p></td>
-                        <td></td>
-                        <td class="text-right">$600</td>
+                        <td class="text-right">${{ number_format($order->product->price) }}</td>
                 </tr>
             </tbody>
-        </table> --}}
-        {{-- 
-            <div class="row">
-                <div class="col-xs-6"></div>
-                <div class="col-xs-5">
-                    <table style="width: 100%">
-                        <tbody>
-                            <tr class="well" style="padding: 5px">
-                                <th style="padding: 5px"><div> Balance Due (CAD) </div></th>
-                                <td style="padding: 5px" class="text-right"><strong> $600 </strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div> --}}
+        </table>
 
     </div>
 

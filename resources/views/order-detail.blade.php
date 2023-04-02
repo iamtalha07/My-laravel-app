@@ -95,53 +95,29 @@
                         </div>
                     </div>
 
-                    {{-- <div class="table-responsive">
-              <table class="table invoice-table">
-                <thead style="background: #F5F5F5;">
-                  <tr>
-                    <th>Item List</th>
-                    <th></th>
-                    <th class="text-right">Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                        <strong>Service</strong>
-                        <p>Description here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita perferendis doloribus, quaerat molestias est eum, adipisci dolorem nulla rerum voluptatibus.</p>
-                    </td>
-                    <td></td>
-                    <td class="text-right">$600</td>
-                  </tr>
+                    <div class="table-responsive">
+                        <table class="table invoice-table">
+                            <thead style="background: #F5F5F5;">
+                                <tr>
+                                    <th>Item</th>
+                                    <th></th>
+                                    <th class="text-right">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>{{ $order->product->name }}</strong>
+                                    </td>
+                                    <td></td>
+                                    <td class="text-right">${{ number_format($order->product->price) }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                  <tr>
-                    <td>
-                        <strong>Service</strong>
-                        <p>Description here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita perferendis doloribus, quaerat molestias est eum, adipisci dolorem nulla rerum voluptatibus.</p>
-                    </td>
-                    <td></td>
-                    <td class="text-right">$600</td>
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div><!-- /table-responsive --> --}}
-                    {{-- 
-              <table class="table invoice-total">
-                <tbody>
-                  <tr>
-                    <td class="text-right"><strong>Balance Due :</strong></td>
-                    <td class="text-right small-width">$600</td>
-                  </tr>
-                </tbody>
-              </table> --}}
-
-                    <hr>
-
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
 </body>
 

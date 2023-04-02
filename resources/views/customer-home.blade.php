@@ -1,6 +1,14 @@
 @extends('layouts.master_layout.master_layout')
 @section('title', 'Home')
 @section('content')
+@push('style')
+<style>
+    .img-fluid {
+    max-width: 100%;
+    height: 200px;
+}
+</style>
+@endpush
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -54,7 +62,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
                                     <button type="button" id="{{ $product->id }}" class="btn btn-primary butBtn"
-                                        data-toggle="modal" data-target="#shippingModal">Buy now</button>
+                                        data-toggle="modal" data-target="#shippingModal" data-prod_id="{{$product->id}}">Buy now</button>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +92,7 @@
                 <form action="#" id="order_form">
                     @csrf
                     <div class="modal-body">
+                    <input type="hidden" name="product_id" id="productId" class="form-control">
                         <div class="form-group">
                             <label for="customer_name">Customer Name:</label>
                             <input type="text" class="form-control" name="customer_name"
@@ -110,6 +119,7 @@
     <!--Shipping Detail Modal End-->
 
     <script>
+    $(document).ready(function(){
         $("#order_form").on('submit', function(e) {
             e.preventDefault();
             $('#add_order_btn').text('Placing Order...')
@@ -134,5 +144,13 @@
                 }
             })
         })
+
+        $('#shippingModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) 
+            var prodId = button.data('prod_id')
+            var modal = $(this)
+            modal.find('.modal-body #productId').val(prodId)
+        });
+    })
     </script>
 @endsection

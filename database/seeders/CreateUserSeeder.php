@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,7 @@ class CreateUserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        $users =       [
             [
                 'name' => 'User',
                 'email' => 'user@user.com',
@@ -31,6 +32,15 @@ class CreateUserSeeder extends Seeder
                 'role' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
-        ]);
+        ];
+
+        foreach ($users as $user) {
+            $newUser = User::create($user);
+            if ($newUser->role == 'customer') {
+                $newUser->points()->create([
+                    'points' => 200
+                ]);
+            }
+        }
     }
 }

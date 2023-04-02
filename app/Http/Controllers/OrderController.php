@@ -13,6 +13,7 @@ class OrderController extends Controller
     public function createOrder(Request $request){
         $orderDetails = [
             'user_id' => Auth::user()->id,
+            'product_id' => $request->product_id,
             'customer_name' => $request->customer_name,
             'contact' => $request->contact,
             'address' => $request->address,
