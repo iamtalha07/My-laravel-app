@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::middleware(['auth','user-role:customer'])->group(function(){
     Route::get('/home',[HomeController::class, 'customerDashboard'])->name('home');
     Route::post('/create-order',[OrderController::class, 'createOrder'])->name('order');
     Route::get('/order',[OrderController::class, 'fetchAllOrder'])->name('fetch.order');
+    Route::get('/order-pdf/{order}', [OrderController::class, 'orderPdf'])->name('orders.pdf');
+    Route::get('/order-pdf-download/{order}', [OrderController::class, 'orderPdfDownload'])->name('orders.download');
 });
 
 // //Admin route

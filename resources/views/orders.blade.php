@@ -49,8 +49,8 @@
                                                         <td>{{$order->customer_name}}</td>
                                                         <td>{{$order->contact}}</td>
                                                         <td>{{$order->address}}</td>
-                                                        <td>{{$order->created_at->format('Y-m-d');}}</td>
-                                                        <td><a title="Detail" href=""><i class="fa fa-eye"></i></a></td>
+                                                        <td>{{$order->created_at->format('Y-m-d')}}</td>
+                                                        <td><a title="Download PDF" href="{{route('orders.pdf',$order->id)}}"><i class="fas fa-download"></i></a></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Point;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -29,4 +30,17 @@ class OrderController extends Controller
             'orders' => $orders
         ]);
     }
+
+    public function orderPdf(Order $order){
+        return view('order-detail',[
+            'order' => $order
+        ]);
+    }
+
+    public function orderPdfDownload(Order $order){
+        $data['order'] = $order;
+        $pdf = Pdf::loadView('pdf-order',$data);
+        return $pdf->download('invoice.pdf');
+    }
+
 }
