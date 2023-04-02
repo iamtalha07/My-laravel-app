@@ -29,42 +29,8 @@ class ProductController extends Controller
     public function fetchAllProducts()
     {
         $products = Product::all();
-        $output = '';
-
-        if ($products->count() > 0) {
-            $output .= '<table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>';
-            foreach ($products as $product) {
-                $output .= '<tr>
-                    <td>' . $product->id . '</td>
-                    <td><img src="' . asset('images/product-image/' . $product->image) . '" width="50" alt="" class="img-thumbnail rounded-circle"></td>
-                    <td>' . $product->name . '</td>
-                    <td>' . $product->price . '</td>
-                    <td>
-                    <a href="#" id="' . $product->id . '" class="editIcon" data-toggle="modal" data-target="#editProductModal"><i class="fa fa-edit"></i></a>
-
-                    <a href="#" id="' . $product->id . '" class="deleteIcon"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>';
-            }
-            $output .= '</tbody></table>';
-            echo $output;
-        } else {
-            echo '<div class="card-body">
-                <div class="alert alert-info">
-                    <p>No records found</p>
-                </div>
-            </div>';
-        }
+        $productView = view('product-view',['products' => $products])->render();
+        return $productView;
     }
 
     public function edit(Request $request)

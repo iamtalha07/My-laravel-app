@@ -131,7 +131,6 @@
                     url: '{{ route('fetchProducts') }}',
                     method: 'get',
                     success: function(response) {
-                        console.log(response)
                         $("#show_all_products").html(response);
                         $("table").DataTable({
                             order: [0, 'desc']

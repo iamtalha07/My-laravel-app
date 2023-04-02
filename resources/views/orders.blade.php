@@ -50,7 +50,7 @@
                                                         <td>{{$order->contact}}</td>
                                                         <td>{{$order->address}}</td>
                                                         <td>{{$order->created_at->format('Y-m-d')}}</td>
-                                                        <td><a title="Download PDF" href="{{route('orders.pdf',$order->id)}}"><i class="fas fa-download"></i></a></td>
+                                                        <td><a title="Download PDF" href="{{route('orders.pdf',$order->id)}}" target="__blank"><i class="fas fa-download"></i></a></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
