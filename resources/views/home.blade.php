@@ -1,4 +1,5 @@
 @extends('layouts.master_layout.master_layout')
+@section('title', 'Home')
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">

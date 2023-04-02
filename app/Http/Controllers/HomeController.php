@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,15 +17,6 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
-    }
 
     public function adminDashboard()
     {
@@ -33,7 +25,10 @@ class HomeController extends Controller
 
     public function customerDashboard()
     {
-        return view('home');
+        $products = Product::all();
+        return view('customer-home',[
+            'products' => $products
+        ]);
     }
 
 

@@ -60,7 +60,9 @@ class ProductController extends Controller
             echo $output;
         } else {
             echo '<div class="card-body">
-                <p>No records found</p>
+                <div class="alert alert-info">
+                    <p>No records found</p>
+                </div>
             </div>';
         }
     }

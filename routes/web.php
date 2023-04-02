@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -16,7 +18,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+        return view('auth.login');
 });
 
 Auth::routes();
@@ -24,6 +26,8 @@ Auth::routes();
 //User route
 Route::middleware(['auth','user-role:customer'])->group(function(){
     Route::get('/home',[HomeController::class, 'customerDashboard'])->name('home');
+    Route::post('/create-order',[OrderController::class, 'createOrder'])->name('order');
+    Route::get('/order',[OrderController::class, 'fetchAllOrder'])->name('fetch.order');
 });
 
 // //Admin route

@@ -21,53 +21,41 @@
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
+
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                   data-accordion="false">
+                  @if(Auth::user()->role == 'customer')
+                  <li class="nav-item menu-open">
+                      <a href="#" class="nav-link active">
+                        <i class="fas fa-star"></i>
+                          <p>
+                              Points
+                          </p>
+                          <span class="badge badge-pill badge-danger ml-1" id="points">{{Auth::user()->points ? Auth::user()->points->points : 0}}</span>
+                      </a>
+                  </li>
+                  @endif
                   <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                   <li class="nav-item">
-                      <a href="/" class="nav-link">
+                      <a href="{{ Auth::user()->role == 'admin' ? route('home.admin') : route('home') }}"
+                          class="nav-link">
                           <i class="fas fa-tachometer-alt"></i>
                           <p>
                               Dashboard
                           </p>
                       </a>
                   </li>
+                  @if(Auth::user()->role == 'customer')
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="fas fa-tags"></i>
+                      <a href="{{ route('fetch.order') }}" class="nav-link">
+                          <i class="fas fa-shopping-bag"></i>
                           <p>
-                              Option 1
-                              <i class="right fas fa-angle-left"></i>
+                              Order
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Option</p>
-                              </a>
-                          </li>
-                      </ul>
                   </li>
-
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="fas fa-boxes"></i>
-                          <p>
-                              Option 2
-                              <i class="fas fa-angle-left right"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Option</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
+                  @endif
               </ul>
           </nav>
           <!-- /.sidebar-menu -->

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Attribute;
 
+use App\Models\Order;
 use App\Models\Point;
 use Attribute as GlobalAttribute;
 use Laravel\Sanctum\HasApiTokens;
@@ -55,5 +56,10 @@ class User extends Authenticatable
     public function points()
     {
         return $this->hasOne(Point::class,'user_id','id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class,'user_id','id');
     }
 }
