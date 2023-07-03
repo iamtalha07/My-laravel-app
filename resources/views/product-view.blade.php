@@ -22,7 +22,7 @@
 
                         <a href="#" id="{{ $product->id }}" class="deleteIcon"><i class="fa fa-trash"></i></a>
                     </td>
-                </tr>';
+                </tr>
             @endforeach
         </tbody>
     </table>
