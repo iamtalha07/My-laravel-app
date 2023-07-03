@@ -37,13 +37,13 @@
                                 required>
                         </div>
                         <div class="form-group">
+                            <label for="name">Product Description:</label>
+                            <textarea name="description" class="form-control" cols="20" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="price">Product Price:</label>
                             <input type="number" class="form-control" name="price" placeholder="Enter Product Price"
                                 required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image">Image:</label>
-                            <input type="file" name="image" class="form-control" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -69,7 +69,6 @@
                 <form action="#" method="POST" id="edit_product_form" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="product_id" id="product_id">
-                    <input type="hidden" name="product_image" id="product_image">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Product Name:</label>
@@ -77,13 +76,13 @@
                                 placeholder="Enter Product Name" required>
                         </div>
                         <div class="form-group">
+                            <label for="name">Product Description:</label>
+                            <textarea name="description" id="description" class="form-control" cols="20" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="price">Product Price:</label>
                             <input type="number" class="form-control" name="price" id="price"
                                 placeholder="Enter Product Price" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image">Image:</label>
-                            <input type="file" name="image" id="image" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -182,9 +181,9 @@
                 },
                 success: function(response) {
                     $("#name").val(response.name);
+                    $("#description").val(response.description);
                     $("#price").val(response.price);
                     $("#product_id").val(response.id);
-                    $("#product_image").val(response.image);
                 }
             })
         })

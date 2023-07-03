@@ -18,17 +18,9 @@ class HomeController extends Controller
     }
 
 
-    public function adminDashboard()
+    public function dashboard()
     {
         return view('home');
-    }
-
-    public function customerDashboard()
-    {
-        $products = Product::all();
-        return view('customer-home',[
-            'products' => $products
-        ]);
     }
 
 

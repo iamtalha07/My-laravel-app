@@ -48,18 +48,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getRoleAttribute($value)
-    {
-        return ["customer","admin"][$value];
-    }
-
-    public function points()
-    {
-        return $this->hasOne(Point::class,'user_id','id');
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class,'user_id','id');
-    }
 }

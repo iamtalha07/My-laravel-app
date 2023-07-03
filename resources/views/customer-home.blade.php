@@ -27,27 +27,16 @@
     <!-- /.content-header -->
 
     <section style="background-color: #eee;">
-        @if($products->count() > 0)
+        {{-- @if($products->count() > 0) --}}
         <div class="container py-5">
             <div class="row justify-content-center">
-                @foreach ($products as $product)
+                {{-- @foreach ($products as $product) --}}
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         <div class="card" style="border-radius: 15px;">
-                            <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
-                                data-mdb-ripple-color="light">
-                                <img src="{{ asset('images/product-image/' . $product->image) }}"
-                                    style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid"
-                                    width="500" height="100" alt="Laptop" />
-
-
-                                <a href="#!">
-                                    <div class="mask"></div>
-                                </a>
-                            </div>
                             <div class="card-body pb-0">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <p><a href="#!" class="text-dark"><b>{{ $product->name }}</b></a></p>
+                                        <p><a href="#!" class="text-dark"></a></p>
                                     </div>
                                 </div>
                             </div>
@@ -55,28 +44,22 @@
                             <div class="card-body pb-0">
                                 <div class="d-flex justify-content-between">
                                     <p class="text-dark">Price</p>
-                                    <p><a href="#!" class="text-dark">${{ number_format($product->price) }}</a></p>
+                                    <p><a href="#!" class="text-dark"></a></p>
                                 </div>
                             </div>
                             <hr class="my-0" />
-                            <div class="card-body">
+                            {{-- <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
                                     <button type="button" id="{{ $product->id }}" class="btn btn-primary butBtn"
                                         data-toggle="modal" data-target="#shippingModal" data-prod_id="{{$product->id}}">Buy now</button>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
-                @endforeach
+                {{-- @endforeach --}}
             </div>
         </div>
-        @else
-        <div class="card-body">
-            <div class="alert alert-info">
-              No product found.
-            </div>
-          </div>
-        @endif
+
     </section>
 
     <!-- Shipping Detail Modal Start-->
@@ -124,7 +107,7 @@
             e.preventDefault();
             $('#add_order_btn').text('Placing Order...')
             $.ajax({
-                url: '{{ route('order') }}',
+                url: '',
                 type: 'POST',
                 data: $('#order_form').serialize(),
                 success: function(response) {
@@ -137,7 +120,7 @@
                     }
                     var points = parseInt($('#points').text());
                     var newPoint = points + 100;
-                    $('#points').text(newPoint); 
+                    $('#points').text(newPoint);
                     $('#add_order_btn').text('Place Order')
                     $('#order_form')[0].reset()
                     $('#shippingModal').modal('hide')
@@ -146,7 +129,7 @@
         })
 
         $('#shippingModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) 
+            var button = $(event.relatedTarget)
             var prodId = button.data('prod_id')
             var modal = $(this)
             modal.find('.modal-body #productId').val(prodId)
